@@ -33,6 +33,8 @@ until a project needs one.
 | `npm run verify`  | Generates the theme, then `astro check` + Prettier check |
 | `npm run format`  | Writes Prettier formatting                               |
 | `npm run audit`   | Lighthouse CI + pa11y against the built site             |
+| `npm run audit:lh:local` | Lighthouse only — preview already on :4321        |
+| `npm run audit:a11y:local` | pa11y only — preview already on :4321           |
 | `npm run php:dev` | Build, install PHPMailer, serve `dist/` for form testing |
 
 Build the style guide into a production bundle with `STYLEGUIDE=1 npm run build`.

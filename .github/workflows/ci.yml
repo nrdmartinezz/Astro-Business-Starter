@@ -54,6 +54,8 @@ jobs:
           name: dist
           path: dist
 
+      - run: npx puppeteer browsers install chrome
+
       # Gates on the mobile profile with whatever tags the config enables.
       - run: npm run audit:lh
 
