@@ -48,52 +48,50 @@ const controlClass =
     {!required && <span class="text-ink-muted font-normal"> (optional)</span>}
   </label>
 
-  {
-    help && (
-      <p id={helpId} class="text-ink-muted text-sm">
-        {help}
-      </p>
-    )
-  }
+  {help && (
+    <p id={helpId} class="text-ink-muted text-sm">
+      {help}
+    </p>
+  )}
 
-  {
-    type === 'textarea' ? (
-      <textarea
-        id={name}
-        name={name}
-        rows={rows}
-        required={required}
-        aria-describedby={helpId}
-        class={controlClass}
-        {...rest}
-      />
-    ) : type === 'select' ? (
-      <select
-        id={name}
-        name={name}
-        required={required}
-        aria-describedby={helpId}
-        class={controlClass}
-        {...rest}
-      >
-        {options.map((option) => (
-          <option value={option.value}>{option.label}</option>
-        ))}
-      </select>
-    ) : (
-      <input
-        id={name}
-        name={name}
-        type={type}
-        required={required}
-        aria-describedby={helpId}
-        class={controlClass}
-        {...rest}
-      />
-    )
-  }
+  {type === 'textarea' ? (
+    <textarea
+      id={name}
+      name={name}
+      rows={rows}
+      required={required}
+      aria-describedby={helpId}
+      class={controlClass}
+      {...rest}
+    />
+  ) : type === 'select' ? (
+    <select
+      id={name}
+      name={name}
+      required={required}
+      aria-describedby={helpId}
+      class={controlClass}
+      {...rest}
+    >
+      {options.map((option) => (
+        <option value={option.value}>{option.label}</option>
+      ))}
+    </select>
+  ) : (
+    <input
+      id={name}
+      name={name}
+      type={type}
+      required={required}
+      aria-describedby={helpId}
+      class={controlClass}
+      {...rest}
+    />
+  )}
 
-  <p id={errorId} class="field-error text-sm text-red-700">{error}</p>
+  <p id={errorId} class="field-error text-sm text-red-700">
+    {error}
+  </p>
 </div>
 
 <style>

@@ -32,13 +32,11 @@ const defaultVariant = background === 'brand' || background === 'inverse' ? 'inv
     {body && <p class="max-w-reading text-lg opacity-90">{body}</p>}
 
     <div class:list={['flex flex-wrap gap-3', align === 'center' && 'justify-center']}>
-      {
-        actions.map((action) => (
-          <Button href={action.href} variant={action.variant ?? defaultVariant} size="lg">
-            {action.label}
-          </Button>
-        ))
-      }
+      {actions.map((action) => (
+        <Button href={action.href} variant={action.variant ?? defaultVariant} size="lg">
+          {action.label}
+        </Button>
+      ))}
     </div>
   </Container>
 </Section>

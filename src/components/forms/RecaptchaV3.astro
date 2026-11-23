@@ -10,14 +10,12 @@ const siteKey = site.recaptchaSiteKey;
 const formEndpoint = site.formEndpoint;
 ---
 
-{
-  siteKey && formEndpoint && (
-    <>
-      <script is:inline src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`} />
-      <div id="recaptcha-config" hidden data-sitekey={siteKey} data-endpoint={formEndpoint} />
-    </>
-  )
-}
+{siteKey && formEndpoint && (
+  <>
+    <script is:inline src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`} />
+    <div id="recaptcha-config" hidden data-sitekey={siteKey} data-endpoint={formEndpoint} />
+  </>
+)}
 
 <script is:inline>
   const config = document.getElementById('recaptcha-config');

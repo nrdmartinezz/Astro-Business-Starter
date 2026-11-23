@@ -8,13 +8,11 @@ import { logdashWebsiteId } from '../../config/site';
 const websiteId = logdashWebsiteId;
 ---
 
-{
-  websiteId && (
-    <script
-      is:inline
-      defer
-      src="https://logdash-east.webpro.com/script.js"
-      data-website-id={websiteId}
-    />
-  )
-}
+{websiteId && (
+  <script
+    is:inline
+    defer
+    src="https://logdash-east.webpro.com/script.js"
+    data-website-id={websiteId}
+  />
+)}

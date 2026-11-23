@@ -10,6 +10,7 @@ Browser form
   → reCAPTCHA v3 token attached (client)
   → POST /api/submit.php (JSON via fetch)
   → honeypot + reCAPTCHA verified (server)
+  → spam bucket (disposable email + contact keywords) — silent success if matched
   → HTML templates rendered
   → PHPMailer sends notification to team
   → optional autoreply to submitter
@@ -23,12 +24,14 @@ Browser form
 
 **Backend** (`public/api/`):
 
-| Path               | Role                                |
-| ------------------ | ----------------------------------- |
-| `submit.php`       | Form handler                        |
-| `lib/mailer.php`   | PHPMailer, templates, rate limiting |
-| `templates/*.html` | Branded HTML emails                 |
-| `config.local.php` | Local dev secrets (gitignored)      |
+| Path                  | Role                                 |
+| --------------------- | ------------------------------------ |
+| `submit.php`          | Form handler                         |
+| `lib/mailer.php`      | PHPMailer, templates, rate limiting  |
+| `lib/spam-filter.php` | Disposable domains + keyword spam    |
+| `data/*.txt`          | Spam/trusted domain lists (deployed) |
+| `templates/*.html`    | Branded HTML emails                  |
+| `config.local.php`    | Local dev secrets (gitignored)       |
 
 On deploy, Astro copies `public/api/` into `dist/api/`. CI runs `composer install` in
 `public/api/` before build so PHPMailer lands in `vendor/`.
@@ -210,9 +213,11 @@ fill in the optional SMTP fields in `config.local.php`.
 ## Security
 
 - Secrets never ship in git (`config.local.php` is gitignored).
+- [`public/api/.htaccess`](../public/api/.htaccess) blocks direct HTTP access to `lib/`, `data/`, `templates/`, `vendor/`, and config files; only `submit.php` is public.
 - Honeypot field `_gotcha` — bots get a fake success response.
 - reCAPTCHA v3 verified server-side (score threshold configurable via `recaptcha_min_score`).
 - Rate limiting by IP (`rate_limit_seconds`, `rate_limit_max`).
+- **Spam bucket** ([`lib/spam-filter.php`](../public/api/lib/spam-filter.php)): disposable email domains are checked on every form; keyword phrases/tokens apply only to `form_type=contact` (so other form types can mention SEO or similar without false positives). Lists live in [`public/api/data/`](../public/api/data/) (`spam-keywords-phrases.txt`, `spam-keywords-tokens.txt`, `disposable-email-domains.txt`, `trusted-email-domains.txt`). Major providers (Gmail, Outlook, Yahoo, iCloud, ISP mail, etc.) are on the trusted list and are never blocked even if they appear in the disposable file. Override via `spam_keywords_extra`, `spam_keywords_disable`, `disposable_domains_extra`, `trusted_email_domains_extra`, and optional `spam_log_path` in the server mail config. Matches log to PHP error log (and the optional file) and return `{ "ok": true }` with no email — same contract as the honeypot.
 - Template filenames sanitized — no path traversal.
 
 ## Troubleshooting

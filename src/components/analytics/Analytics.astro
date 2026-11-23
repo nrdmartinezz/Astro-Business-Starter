@@ -87,16 +87,14 @@ const needsConsent = site.consent === 'banner';
   }
 </script>
 
-{
-  metaPixel && (
-    <noscript>
-      <img
-        height="1"
-        width="1"
-        style="display:none"
-        alt=""
-        src={`https://www.facebook.com/tr?id=${metaPixel}&ev=PageView&noscript=1`}
-      />
-    </noscript>
-  )
-}
+{metaPixel && (
+  <noscript>
+    <img
+      height="1"
+      width="1"
+      style="display:none"
+      alt=""
+      src={`https://www.facebook.com/tr?id=${metaPixel}&ev=PageView&noscript=1`}
+    />
+  </noscript>
+)}

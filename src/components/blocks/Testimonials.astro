@@ -46,35 +46,33 @@ const columnClass = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-3' }[columns];
     />
 
     <ul class:list={['grid w-full gap-6', columnClass]}>
-      {
-        items.map((item) => (
-          <Card as="li" variant="elevated">
-            {item.rating && (
-              <div class="flex gap-0.5" role="img" aria-label={`${item.rating} out of 5 stars`}>
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Icon
-                    name="lucide:star"
-                    class:list={[
-                      'size-4',
-                      index < item.rating! ? 'text-accent-500' : 'text-neutral-300',
-                    ]}
-                    aria-hidden="true"
-                  />
-                ))}
-              </div>
-            )}
+      {items.map((item) => (
+        <Card as="li" variant="elevated">
+          {item.rating && (
+            <div class="flex gap-0.5" role="img" aria-label={`${item.rating} out of 5 stars`}>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Icon
+                  name="lucide:star"
+                  class:list={[
+                    'size-4',
+                    index < item.rating! ? 'text-accent-500' : 'text-neutral-300',
+                  ]}
+                  aria-hidden="true"
+                />
+              ))}
+            </div>
+          )}
 
-            <blockquote class="text-ink-base flex-1">
-              <p>&ldquo;{item.quote}&rdquo;</p>
-            </blockquote>
+          <blockquote class="text-ink-base flex-1">
+            <p>&ldquo;{item.quote}&rdquo;</p>
+          </blockquote>
 
-            <footer class="text-sm">
-              <p class="font-medium">{item.name}</p>
-              {item.role && <p class="text-ink-muted">{item.role}</p>}
-            </footer>
-          </Card>
-        ))
-      }
+          <footer class="text-sm">
+            <p class="font-medium">{item.name}</p>
+            {item.role && <p class="text-ink-muted">{item.role}</p>}
+          </footer>
+        </Card>
+      ))}
     </ul>
   </Container>
 </Section>

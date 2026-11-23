@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=22"
+    "node": ">=22.23.4"
   },
   "scripts": {
     "predev": "node scripts/build-tokens.mjs",
@@ -26,33 +26,33 @@
     "php:dev": "npm run build && npm run php:install && npm run php:serve"
   },
   "dependencies": {
-    "@astrojs/mdx": "^8.0.2",
-    "@astrojs/sitemap": "^3.7.4",
+    "@astrojs/mdx": "^8.0.3",
+    "@astrojs/sitemap": "^3.7.6",
     "@fontsource-variable/inter": "^5.3.0",
-    "@iconify-json/lucide": "^1.2.136",
-    "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.3.5",
+    "@iconify-json/lucide": "^1.2.158",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.13",
     "astro-icon": "^1.2.0",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.5"
   },
   "overrides": {
-    "@puppeteer/browsers": "^3.2.6",
-    "basic-ftp": "^6.2.3",
-    "puppeteer": "^25.16.0",
-    "puppeteer-core": "^25.16.0",
+    "@puppeteer/browsers": "^3.2.7",
+    "basic-ftp": "^6.2.6",
+    "puppeteer": "^25.18.1",
+    "puppeteer-core": "^25.18.1",
     "tmp": "^0.2.7",
-    "uuid": "^11.1.1",
+    "uuid": "^14.0.3",
     "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
-    "@lhci/cli": "^0.15.1",
+    "@astrojs/check": "^0.9.12",
+    "@lhci/cli": "^0.16.1",
     "pa11y-ci": "^5.0.0",
-    "prettier": "^3.9.9",
-    "prettier-plugin-astro": "^0.14.1",
+    "prettier": "^3.10.1",
+    "prettier-plugin-astro": "^1.1.2",
     "prettier-plugin-tailwindcss": "^0.8.1",
-    "start-server-and-test": "^2.1.5",
-    "style-dictionary": "^5.7.1",
-    "typescript": "^5.9.3"
+    "start-server-and-test": "^3.0.13",
+    "style-dictionary": "^5.8.0",
+    "typescript": "^6.0.3"
   }
 }

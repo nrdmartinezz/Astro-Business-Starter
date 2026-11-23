@@ -13,7 +13,7 @@ const vendorDir = path.join(apiDir, 'vendor');
 const phpmailerDir = path.join(vendorDir, 'phpmailer', 'phpmailer');
 const composerPhar = path.join(toolsDir, 'composer.phar');
 const cacert = path.join(root, 'scripts', 'php', 'cacert.pem');
-const PHPMailer_VERSION = 'v6.10.0';
+const PHPMailer_VERSION = 'v7.2.0';
 
 function curlDownload(url, dest) {
   const result = spawnSync('curl', ['-fsSL', '-o', dest, url], { stdio: 'inherit' });

@@ -64,23 +64,21 @@ const suggestions = related(all, entry);
     </Container>
   </Section>
 
-  {
-    entry.data.heroImage && (
-      <Section background="base" spacing="none">
-        <Container width="narrow" class="pt-8">
-          <Image
-            src={entry.data.heroImage}
-            alt={entry.data.heroImageAlt ?? ''}
-            widths={[480, 900]}
-            sizes="(max-width: 900px) 100vw, 900px"
-            loading="eager"
-            fetchpriority="high"
-            class="w-full rounded-lg"
-          />
-        </Container>
-      </Section>
-    )
-  }
+  {entry.data.heroImage && (
+    <Section background="base" spacing="none">
+      <Container width="narrow" class="pt-8">
+        <Image
+          src={entry.data.heroImage}
+          alt={entry.data.heroImageAlt ?? ''}
+          widths={[480, 900]}
+          sizes="(max-width: 900px) 100vw, 900px"
+          loading="eager"
+          fetchpriority="high"
+          class="w-full rounded-lg"
+        />
+      </Container>
+    </Section>
+  )}
 
   <Section background="base" spacing="md">
     <Container width="narrow">
@@ -90,28 +88,26 @@ const suggestions = related(all, entry);
     </Container>
   </Section>
 
-  {
-    suggestions.length > 0 && (
-      <Section background="muted" spacing="md">
-        <Container gap="lg">
-          <Heading level={2}>Keep reading</Heading>
-          <ul class="grid w-full gap-6 sm:grid-cols-3">
-            {suggestions.map((item) => (
-              <Card as="li" variant="outlined">
-                <Heading level={3} size="sm">
-                  <a
-                    href={`/__collection__/${item.id}/`}
-                    class="text-ink-base no-underline hover:underline"
-                  >
-                    {item.data.title}
-                  </a>
-                </Heading>
-                <p class="text-ink-muted text-sm">{item.data.description}</p>
-              </Card>
-            ))}
-          </ul>
-        </Container>
-      </Section>
-    )
-  }
+  {suggestions.length > 0 && (
+    <Section background="muted" spacing="md">
+      <Container gap="lg">
+        <Heading level={2}>Keep reading</Heading>
+        <ul class="grid w-full gap-6 sm:grid-cols-3">
+          {suggestions.map((item) => (
+            <Card as="li" variant="outlined">
+              <Heading level={3} size="sm">
+                <a
+                  href={`/__collection__/${item.id}/`}
+                  class="text-ink-base no-underline hover:underline"
+                >
+                  {item.data.title}
+                </a>
+              </Heading>
+              <p class="text-ink-muted text-sm">{item.data.description}</p>
+            </Card>
+          ))}
+        </ul>
+      </Container>
+    </Section>
+  )}
 </BaseLayout>

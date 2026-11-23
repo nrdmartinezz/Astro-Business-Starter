@@ -8,16 +8,17 @@ const enabled = Boolean(site.formEndpoint);
 const thankYouUrl = new URL('/thank-you/', site.url).href;
 ---
 
-{
-  enabled && (
-    <>
-      <div
-        id="form-handler-config"
-        hidden
-        data-endpoint={site.formEndpoint}
-        data-thank-you={thankYouUrl}
-      />
-      <script>import {initSiteForms} from '../../lib/formSubmit'; initSiteForms();</script>
-    </>
-  )
-}
+{enabled && (
+  <>
+    <div
+      id="form-handler-config"
+      hidden
+      data-endpoint={site.formEndpoint}
+      data-thank-you={thankYouUrl}
+    />
+    <script>
+      import { initSiteForms } from '../../lib/formSubmit';
+      initSiteForms();
+    </script>
+  </>
+)}

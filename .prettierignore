@@ -1,4 +1,5 @@
 node_modules
+public/api/vendor
 dist
 .astro
 src/styles/theme.css

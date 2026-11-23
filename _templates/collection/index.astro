@@ -46,52 +46,48 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' });
   <Section background="base" spacing="md">
     <Container gap="lg">
       <ul class="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          page.data.map((entry) => (
-            <Card as="li" variant="outlined">
-              <p class="text-ink-muted text-sm">
-                <time datetime={entry.data.publishDate.toISOString()}>
-                  {dateFormat.format(entry.data.publishDate)}
-                </time>
-                {entry.data.category && <span> · {entry.data.category}</span>}
-              </p>
-              <Heading level={2} size="md">
-                <a
-                  href={`/__collection__/${entry.id}/`}
-                  class="text-ink-base no-underline hover:underline"
-                >
-                  {entry.data.title}
-                </a>
-              </Heading>
-              <p class="text-ink-muted">{entry.data.description}</p>
-            </Card>
-          ))
-        }
+        {page.data.map((entry) => (
+          <Card as="li" variant="outlined">
+            <p class="text-ink-muted text-sm">
+              <time datetime={entry.data.publishDate.toISOString()}>
+                {dateFormat.format(entry.data.publishDate)}
+              </time>
+              {entry.data.category && <span> · {entry.data.category}</span>}
+            </p>
+            <Heading level={2} size="md">
+              <a
+                href={`/__collection__/${entry.id}/`}
+                class="text-ink-base no-underline hover:underline"
+              >
+                {entry.data.title}
+              </a>
+            </Heading>
+            <p class="text-ink-muted">{entry.data.description}</p>
+          </Card>
+        ))}
       </ul>
 
-      {
-        (page.url.prev || page.url.next) && (
-          <nav class="flex w-full items-center justify-between" aria-label="Pagination">
-            {page.url.prev ? (
-              <a href={page.url.prev} class="text-ink-brand inline-flex min-h-11 items-center">
-                ← Newer
-              </a>
-            ) : (
-              <span />
-            )}
-            <p class="text-ink-muted text-sm">
-              Page {page.currentPage} of {page.lastPage}
-            </p>
-            {page.url.next ? (
-              <a href={page.url.next} class="text-ink-brand inline-flex min-h-11 items-center">
-                Older →
-              </a>
-            ) : (
-              <span />
-            )}
-          </nav>
-        )
-      }
+      {(page.url.prev || page.url.next) && (
+        <nav class="flex w-full items-center justify-between" aria-label="Pagination">
+          {page.url.prev ? (
+            <a href={page.url.prev} class="text-ink-brand inline-flex min-h-11 items-center">
+              ← Newer
+            </a>
+          ) : (
+            <span />
+          )}
+          <p class="text-ink-muted text-sm">
+            Page {page.currentPage} of {page.lastPage}
+          </p>
+          {page.url.next ? (
+            <a href={page.url.next} class="text-ink-brand inline-flex min-h-11 items-center">
+              Older →
+            </a>
+          ) : (
+            <span />
+          )}
+        </nav>
+      )}
     </Container>
   </Section>
 </BaseLayout>

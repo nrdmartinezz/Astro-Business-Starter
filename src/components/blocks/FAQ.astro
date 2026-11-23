@@ -57,21 +57,19 @@ const jsonLd = {
     />
 
     <div class="w-full">
-      {
-        items.map((item) => (
-          <details name={multiple ? undefined : 'faq'} class="border-line-base group border-b">
-            <summary class="flex min-h-14 cursor-pointer items-center justify-between gap-4 py-2 font-medium">
-              {item.question}
-              <Icon
-                name="lucide:plus"
-                class="size-5 shrink-0 transition-transform group-open:rotate-45"
-                aria-hidden="true"
-              />
-            </summary>
-            <p class="text-ink-muted max-w-reading pb-4">{item.answer}</p>
-          </details>
-        ))
-      }
+      {items.map((item) => (
+        <details name={multiple ? undefined : 'faq'} class="border-line-base group border-b">
+          <summary class="flex min-h-14 cursor-pointer items-center justify-between gap-4 py-2 font-medium">
+            {item.question}
+            <Icon
+              name="lucide:plus"
+              class="size-5 shrink-0 transition-transform group-open:rotate-45"
+              aria-hidden="true"
+            />
+          </summary>
+          <p class="text-ink-muted max-w-reading pb-4">{item.answer}</p>
+        </details>
+      ))}
     </div>
   </Container>
 </Section>

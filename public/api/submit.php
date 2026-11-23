@@ -5,6 +5,7 @@ declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');
 
 require_once __DIR__ . '/lib/mailer.php';
+require_once __DIR__ . '/lib/spam-filter.php';
 
 function jsonError(int $status, string $message): never
 {
@@ -66,6 +67,12 @@ if ($name === '' || $email === '' || $message === '') {
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     jsonError(400, 'Please enter a valid email address.');
+}
+
+$spamReason = submissionLooksLikeSpam($_POST, $config);
+if ($spamReason !== null) {
+    logSpamSubmission($spamReason, $_POST, $remoteIp, $config);
+    jsonSuccess();
 }
 
 $services = [];

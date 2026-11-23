@@ -37,4 +37,11 @@ return [
     'recaptcha_min_score' => 0.5,
     'rate_limit_seconds' => 60,
     'rate_limit_max' => 5,
+
+    // Spam bucket (silent success, no email). Lists in public/api/data/*.txt
+    // 'spam_log_path' => '/home/user/private/form-spam.log',
+    // 'spam_keywords_extra' => ['custom phrase'],
+    // 'spam_keywords_disable' => ['uganda'],
+    // 'disposable_domains_extra' => ['spam-domain.example'],
+    // 'trusted_email_domains_extra' => ['your-corporate-domain.com'],
 ];

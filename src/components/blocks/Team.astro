@@ -50,32 +50,30 @@ const columnClass = {
     />
 
     <ul class:list={['grid w-full gap-8', columnClass]}>
-      {
-        items.map((member) => (
-          <li class="flex flex-col gap-3">
-            {member.photo ? (
-              <Image
-                src={member.photo}
-                alt=""
-                widths={[240, 480]}
-                sizes="(max-width: 640px) 100vw, 25vw"
-                loading="lazy"
-                class="aspect-4/5 w-full rounded-lg object-cover"
-              />
-            ) : (
-              <div class="bg-surface-muted aspect-4/5 w-full rounded-lg" aria-hidden="true" />
-            )}
+      {items.map((member) => (
+        <li class="flex flex-col gap-3">
+          {member.photo ? (
+            <Image
+              src={member.photo}
+              alt=""
+              widths={[240, 480]}
+              sizes="(max-width: 640px) 100vw, 25vw"
+              loading="lazy"
+              class="aspect-4/5 w-full rounded-lg object-cover"
+            />
+          ) : (
+            <div class="bg-surface-muted aspect-4/5 w-full rounded-lg" aria-hidden="true" />
+          )}
 
-            <div class="flex flex-col gap-1">
-              <Heading level={titleLevel === 2 ? 3 : 4} size="sm">
-                {member.name}
-              </Heading>
-              <p class="text-ink-brand text-sm font-medium">{member.role}</p>
-              {member.bio && <p class="text-ink-muted text-sm">{member.bio}</p>}
-            </div>
-          </li>
-        ))
-      }
+          <div class="flex flex-col gap-1">
+            <Heading level={titleLevel === 2 ? 3 : 4} size="sm">
+              {member.name}
+            </Heading>
+            <p class="text-ink-brand text-sm font-medium">{member.role}</p>
+            {member.bio && <p class="text-ink-muted text-sm">{member.bio}</p>}
+          </div>
+        </li>
+      ))}
     </ul>
   </Container>
 </Section>

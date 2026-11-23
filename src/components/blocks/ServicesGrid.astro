@@ -51,25 +51,21 @@ const columnClass = {
     />
 
     <ul class:list={['grid w-full gap-6', columnClass]}>
-      {
-        items.map((item) => (
-          <Card as="li" variant="outlined">
-            {item.icon && (
-              <Icon name={item.icon} class="text-brand-600 size-8" aria-hidden="true" />
+      {items.map((item) => (
+        <Card as="li" variant="outlined">
+          {item.icon && <Icon name={item.icon} class="text-brand-600 size-8" aria-hidden="true" />}
+          <Heading level={titleLevel === 2 ? 3 : 4} size="md">
+            {item.href ? (
+              <a href={item.href} class="text-ink-base no-underline hover:underline">
+                {item.title}
+              </a>
+            ) : (
+              item.title
             )}
-            <Heading level={titleLevel === 2 ? 3 : 4} size="md">
-              {item.href ? (
-                <a href={item.href} class="text-ink-base no-underline hover:underline">
-                  {item.title}
-                </a>
-              ) : (
-                item.title
-              )}
-            </Heading>
-            <p class="text-ink-muted">{item.body}</p>
-          </Card>
-        ))
-      }
+          </Heading>
+          <p class="text-ink-muted">{item.body}</p>
+        </Card>
+      ))}
     </ul>
   </Container>
 </Section>

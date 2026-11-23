@@ -57,13 +57,11 @@ const positioned = sticky !== 'static';
         {site.business.phone}
       </a>
 
-      {
-        navigation.cta && (
-          <Button href={navigation.cta.href} size="sm" class="max-md:hidden">
-            {navigation.cta.label}
-          </Button>
-        )
-      }
+      {navigation.cta && (
+        <Button href={navigation.cta.href} size="sm" class="max-md:hidden">
+          {navigation.cta.label}
+        </Button>
+      )}
 
       <MobileNav currentPath={currentPath} />
     </div>
