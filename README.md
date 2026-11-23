@@ -39,6 +39,10 @@ until a project needs one.
 
 Build the style guide into a production bundle with `STYLEGUIDE=1 npm run build`.
 
+### CI and `package-lock.json`
+
+GitHub Actions runs **`npm ci`**, which fails if `package.json` and `package-lock.json` are out of sync (common if dependencies or scripts change but the lock file was not committed). After any change to `package.json` or overrides, run **`npm install`** locally and commit **both** files together.
+
 ## Docs
 
 | Doc                           | Covers                                              |

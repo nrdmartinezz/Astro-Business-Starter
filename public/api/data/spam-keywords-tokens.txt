@@ -1,0 +1,18 @@
+# Whole-word tokens only (word-boundary match after light de-obfuscation)
+viagra
+cialis
+levitra
+kamagra
+sildenafil
+tadalafil
+vardenafil
+xanax
+oxycodone
+hydrocodone
+tramadol
+phentermine
+porn
+xxx
+hookup
+escort
+sex

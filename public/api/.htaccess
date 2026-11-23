@@ -1,0 +1,24 @@
+# Block direct HTTP access to library code, templates, vendor, and config files.
+# Form and overview handlers stay public. Library, templates, vendor, and the briefing source do not.
+
+<IfModule mod_authz_core.c>
+  <FilesMatch "^(config\.(example|local)\.php)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+  <FilesMatch "^(config\.(example|local)\.php)$">
+    Order deny,allow
+    Deny from all
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^lib/ - [F,L]
+  RewriteRule ^data/ - [F,L]
+  RewriteRule ^templates/ - [F,L]
+  RewriteRule ^vendor/ - [F,L]
+  RewriteRule ^private/ - [F,L]
+</IfModule>
